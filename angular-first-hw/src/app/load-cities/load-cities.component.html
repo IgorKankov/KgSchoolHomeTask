@@ -1,0 +1,7 @@
+<div>
+  <hr>
+  <ul *ngIf="cities" class="cities-container">
+    <li *ngFor="let city of cities; let isOdd = odd; let isEven = even; trackBy: trackById" [ngClass]="{odd: isOdd, even: isEven}">{{city.name}}</li>
+  </ul>
+  <button (click)="showCities()">Load Cities</button>
+</div>

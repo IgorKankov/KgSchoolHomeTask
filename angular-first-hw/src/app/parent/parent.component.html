@@ -1,0 +1,7 @@
+<div class="container">
+  <app-child [firstName]="firstName" (getFullName)="ngOnChange($event)"></app-child>
+  <p *ngIf="fullName">Full name: {{fullName}}</p>
+  <app-load-cities></app-load-cities>
+  <hr>
+  <p #redParagraph>Simple Paragraph</p>
+</div>
