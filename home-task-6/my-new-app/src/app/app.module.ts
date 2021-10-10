@@ -6,13 +6,15 @@ import { AppSmartCounterComponent } from './app-smart-counter/app-smart-counter.
 import { ReactiveFormsModule } from "@angular/forms";
 import { ColorConverterComponent } from './color-converter/color-converter.component';
 import { HexToRgbPipe } from './hex-to-rgb.pipe';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppSmartCounterComponent,
     ColorConverterComponent,
-    HexToRgbPipe
+    HexToRgbPipe,
+    SignUpFormComponent
   ],
   imports: [
     BrowserModule,

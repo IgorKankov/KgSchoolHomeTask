@@ -1,0 +1,60 @@
+<div class="form-container">
+  <h2>Sign Up</h2>
+  <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <fieldset class="inputs-group" formGroupName="nameGroup">
+      <label for="first-name">First Name:
+        <input id="first-name" type="text" formControlName="firstName">
+        <small *ngIf="nameGroup.controls.firstName.invalid && nameGroup.controls.firstName.touched"
+               class="validation-msg">
+          This field is required
+        </small>
+      </label>
+      <label for="last-name">Last Name:
+        <input id="last-name" type="text" formControlName="lastName">
+        <small *ngIf="nameGroup.controls.lastName.invalid && nameGroup.controls.lastName.touched"
+               class="validation-msg">
+          This field is required
+        </small>
+      </label>
+    </fieldset>
+    <fieldset class="inputs-group" formGroupName="contactGroup">
+      <label for="phone-number">Phone Number:
+        <input id="phone-number" type="tel" formControlName="phoneNumber">
+        <small *ngIf="contactGroup.controls.phoneNumber.invalid && contactGroup.controls.phoneNumber.touched"
+               class="validation-msg">
+          Please use next format +1234567890
+        </small>
+      </label>
+      <label for="email">Email:
+        <input id="email" type="email" formControlName="email">
+        <small *ngIf="contactGroup.controls.email.invalid && contactGroup.controls.email.touched"
+               class="validation-msg">
+          Please use next format ex@ex.ex
+        </small>
+      </label>
+    </fieldset>
+    <fieldset class="inputs-group" formGroupName="secureGroup">
+      <label for="password">Password:
+        <input id="password" [type]="show ? 'text' : 'password'" formControlName="password">
+        <small *ngIf="secureGroup.controls.password.invalid && secureGroup.controls.password.touched"
+               class="validation-msg">
+          This field is required
+        </small>
+      </label>
+      <label for="confirm-password">Confirm Password:
+        <input id="confirm-password" [type]="show ? 'text' : 'password'" formControlName="confirmPassword">
+        <small *ngIf="secureGroup.errors?.notIdentified && secureGroup.controls.password.valid" class="validation-msg">
+          Password not confirmed
+        </small>
+      </label>
+      <i (click)="showPassword()">{{show ? "&#128585;" : "&#128584;"}}</i>
+    </fieldset>
+    <button type="submit">Submit</button>
+    <small *ngIf="formIsNotFilled" class="form-validation-msg">
+      Please fill in all fields
+    </small>
+  </form>
+</div>
+<div class="submitted-modal" *ngIf="signedUp">
+  <p>Hi {{nameGroup.controls.firstName.value + " " + nameGroup.controls.lastName.value}}. You are signed up!</p>
+</div>
